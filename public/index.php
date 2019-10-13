@@ -92,11 +92,12 @@ function getTalk($talk) {
 ?>
 
 <?php foreach ($track_now_next as $track => $talks): ?>
-<h1><?=$track?></h1>
-
 <ul>
-<?php foreach ($talks as $when => $talk): ?>
-<li><b><?=$when?></b> (<?=getTalkTime($talk)?>) <b><?=$track?>: </b><?=getTalk($talk)?></li>
-<?php endforeach; ?>
+	<li><?=$track?></li>
+	<ul>
+		<?php foreach ($talks as $when => $talk): ?>
+		<li><b><?=$when?></b> (<?=getTalkTime($talk)?>) <b><?=$track?>: </b><?=getTalk($talk)?></li>
+		<?php endforeach; ?>
+	</ul>
 </ul>
 <?php endforeach; ?>
