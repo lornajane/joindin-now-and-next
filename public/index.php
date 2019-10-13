@@ -50,17 +50,20 @@ if ($res->getStatusCode() == 200) {
     // beware very interesting PHP array logic
     $now = [];
     $next = [];
+    $track_now_next = [];
     foreach ($talks_by_track as $track => $talks) {
         reset($talks);
         $talk = current($talks);
         // do we have a "now"?
         if ($date > $talk['start_time']) {
             $now[$track] = $talk;
+            $track_now_next[$track]["now"] = $talk;
             $talk = next($talks);
         }
         // how about a next? Only if it starts in the next hour or so
         if ($date->add(new DateInterval('PT75M')) > $talk['start_time']) {
             $next[$track] = $talk;
+            $track_now_next[$track]["next"] = $talk;
         }
     }
 }
@@ -85,23 +88,15 @@ function getTalk($talk) {
     }
     return $display;
 }
+
 ?>
 
-<h1>Now</h1>
+<?php foreach ($track_now_next as $track => $talks): ?>
+<h1><?=$track?></h1>
 
 <ul>
-<?php foreach ($now as $track => $talk): ?>
-<li><?=getTalkTime($talk)?> <b><?=$track?>: </b><?=getTalk($talk)?></li>
+<?php foreach ($talks as $when => $talk): ?>
+<li><b><?=$when?></b> (<?=getTalkTime($talk)?>) <b><?=$track?>: </b><?=getTalk($talk)?></li>
 <?php endforeach; ?>
 </ul>
-
-
-<h1>Next</h1>
-
-<ul>
-<?php foreach ($next as $track => $talk): ?>
-<li><?=getTalkTime($talk)?> <b><?=$track?>: </b><?=getTalk($talk)?></li>
 <?php endforeach; ?>
-</ul>
-
-
