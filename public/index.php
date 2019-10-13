@@ -7,7 +7,7 @@ $event_url = "https://api.joind.in/v2.1/events/7477";
 
 $date = new DateTimeImmutable();
 // use this to test if you'd like to
-$date = new DateTimeImmutable('20th October 2019 11:40');
+// $date = new DateTimeImmutable('20th October 2019 11:40');
 
 // now don't edit anything else
 $client = new GuzzleHttp\Client();
