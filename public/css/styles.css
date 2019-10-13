@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+/*
+
+	Made by Alexander
+
+*/
+body,html {
+    background-color: #191919;
+    color: #ccc;
+    margin: 0;
+    font-family: Montserrat;
+    font-size: 24px;
+    padding: 0 32px;
+    text-align: center;
+}
+
+.navBar {
+    height: 96px;
+    text-align: center;
+    background-image: url(../logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 16px 0 64px;
+}
+
+.container {
+    text-align: left;
+    margin: 32px;
+    display: inline-block;
+}
+
+h3 {
+    margin: 0 0 16px;
+    color: pink;
+}
+

@@ -7,7 +7,7 @@ $event_url = "https://api.joind.in/v2.1/events/7477";
 
 $date = new DateTimeImmutable();
 // use this to test if you'd like to
-// $date = new DateTimeImmutable('20th October 2019 11:40');
+$date = new DateTimeImmutable('20th October 2019 11:40');
 
 // now don't edit anything else
 $client = new GuzzleHttp\Client();
@@ -90,14 +90,24 @@ function getTalk($talk) {
 }
 
 ?>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<div class="navBar">
+<div class="logo"></div>
+</div>
 
 <?php foreach ($track_now_next as $track => $talks): ?>
-<ul>
-	<li><?=$track?></li>
-	<ul>
-		<?php foreach ($talks as $when => $talk): ?>
-		<li><b><?=$when?></b> (<?=getTalkTime($talk)?>) <b><?=$track?>: </b><?=getTalk($talk)?></li>
-		<?php endforeach; ?>
-	</ul>
-</ul>
+<div class="container">
+<h3><?=$track?></h3>
+
+<?php foreach ($talks as $when => $talk): ?>
+<li><b><?=$when?></b> (<?=getTalkTime($talk)?>) <b><?=$track?>: </b><?=getTalk($talk)?></li>
 <?php endforeach; ?>
+</div>
+<?php endforeach; ?>
+
+</body>
