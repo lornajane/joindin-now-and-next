@@ -5,9 +5,10 @@ require "../vendor/autoload.php";
 // configure this for anything that isn't OggCamp 2019
 $event_url = "https://api.joind.in/v2.1/events/7477";
 
+date_default_timezone_set('Europe/London');
 $date = new DateTimeImmutable();
 // use this to test if you'd like to
-// $date = new DateTimeImmutable('20th October 2019 11:40');
+// $date = new DateTimeImmutable('20th October 2019 12:31');
 
 // now don't edit anything else
 $client = new GuzzleHttp\Client();
@@ -94,6 +95,8 @@ function getTalk($talk) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+<meta http-equiv="refresh" content="60"/>
 </head>
 <body>
 <div class="navBar">
